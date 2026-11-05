@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supplier Connect - ABO Group</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/portal.css">
+    <link rel="stylesheet" href="css/portal-premium.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        portal: {
+                            navy: '#1E293B',
+                            slate: '#334155',
+                            accent: '#3B82F6',
+                            'accent-dark': '#1D4ED8',
+                            'accent-light': '#DBEAFE',
+                            surface: '#F8FAFC',
+                            border: '#E2E8F0',
+                            muted: '#64748B',
+                            success: '#10B981',
+                            warning: '#F59E0B',
+                            danger: '#EF4444'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-portal-surface font-sans text-portal-navy antialiased">
+
+    <!-- ============================================ -->
+    <!-- LOGIN SCREEN (shown when no session)         -->
+    <!-- ============================================ -->
+    <div id="loginScreen" class="min-h-screen flex items-center justify-center p-6 relative overflow-hidden">
+        <!-- Background decoration -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-blue-100 opacity-40 blur-3xl"></div>
+            <div class="absolute -bottom-40 -left-40 w-[400px] h-[400px] rounded-full bg-slate-200 opacity-30 blur-3xl"></div>
+        </div>
+
+        <div class="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+            <!-- Left: Branding -->
+            <div class="hidden lg:block">
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="w-12 h-12 rounded-xl bg-portal-navy text-white flex items-center justify-center font-bold">SC</div>
+                    <div>
+                        <div class="text-xl font-bold">Supplier Connect</div>
+                        <div class="text-xs text-portal-muted uppercase tracking-wider">ABO Group Portal</div>
+                    </div>
+                </div>
+                <h1 class="text-4xl font-bold text-portal-navy leading-tight mb-4">
+                    Your single workspace for<br>procurement collaboration.
+                </h1>
+                <p class="text-portal-muted text-lg mb-8">
+                    Manage opportunities, submit quotations, track purchase orders and communicate with ABO Group — all in one place.
+                </p>
+                <div class="space-y-3">
+                    <div class="flex items-center gap-3 text-sm text-portal-slate">
+                        <div class="w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs">✓</div>
+                        <span>Respond to RFQs from ABO Group</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-portal-slate">
+                        <div class="w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs">✓</div>
+                        <span>Submit and track quotations in real time</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-portal-slate">
+                        <div class="w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs">✓</div>
+                        <span>Manage your company profile and compliance</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Login -->
+            <div class="bg-white rounded-3xl shadow-xl border border-portal-border p-8 lg:p-10">
+                <div class="lg:hidden flex items-center gap-3 mb-6">
+                    <div class="w-10 h-10 rounded-lg bg-portal-navy text-white flex items-center justify-center font-bold">SC</div>
+                    <div>
+                        <div class="font-bold">Supplier Connect</div>
+                        <div class="text-xs text-portal-muted uppercase tracking-wider">ABO Group Portal</div>
+                    </div>
+                </div>
+
+                <h2 class="text-2xl font-bold text-portal-navy mb-1">Welcome back</h2>
+                <p class="text-sm text-portal-muted mb-6">Select a supplier account to continue</p>
+
+                <div class="mb-4 p-3 rounded-lg bg-amber-50 border border-amber-200 text-xs text-amber-800 flex items-start gap-2">
+                    <svg class="w-4 h-4 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <span><strong>Demo mode:</strong> This is a simulated portal. Select any supplier below to explore. No authentication required.</span>
+                </div>
+
+                <div id="loginSupplierList" class="space-y-2 max-h-96 overflow-y-auto">
+                    <!-- Injected by JS -->
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-portal-border text-center">
+                    <a href="../admin/dashboard.html" class="text-sm text-portal-muted hover:text-portal-accent transition-colors">
+                        ← Back to Admin ERP
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- APP SHELL (shown when logged in)             -->
+    <!-- ============================================ -->
+    <div id="appShell" class="hidden min-h-screen">
+        <!-- Sidebar -->
+        <aside id="portalSidebar" class="fixed top-0 left-0 h-screen w-64 bg-portal-navy text-white flex flex-col z-40 transition-transform duration-300 transform lg:translate-x-0 -translate-x-full">
+            <div class="flex items-center gap-3 px-6 h-16 border-b border-white/10">
+                <div class="w-9 h-9 rounded-lg bg-white flex items-center justify-center text-portal-navy font-bold text-xs" id="portalLogo">SC</div>
+                <div class="min-w-0">
+                    <div class="text-sm font-bold tracking-wide">Supplier Connect</div>
+                    <div class="text-[10px] text-slate-400 uppercase tracking-widest">ABO Group</div>
+                </div>
+            </div>
+
+            <div class="px-4 py-4 border-b border-white/10">
+                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">Signed in as</div>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold text-sm flex-shrink-0" id="supplierAvatar">?</div>
+                    <div class="min-w-0 flex-1">
+                        <div class="text-sm font-semibold truncate" id="supplierName">—</div>
+                        <div class="text-[11px] text-slate-400 truncate" id="supplierRef">—</div>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="flex-1 overflow-y-auto py-3 px-3" id="portalNav"></nav>
+
+            <div class="border-t border-white/10 p-3">
+                <button onclick="Portal.logout()" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-slate-300 hover:bg-white/10 hover:text-white transition-colors text-sm">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                    Switch Account
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main -->
+        <div class="lg:ml-64 min-h-screen flex flex-col">
+            <header class="h-16 bg-white border-b border-portal-border flex items-center justify-between px-6 sticky top-0 z-30">
+                <div class="flex items-center gap-4">
+                    <button id="portalMenuToggle" class="lg:hidden text-portal-slate">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </button>
+                    <div>
+                        <h1 id="portalPageTitle" class="text-lg font-bold text-portal-navy">Dashboard</h1>
+                        <p id="portalPageSubtitle" class="text-xs text-portal-muted">—</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="relative">
+                        <button onclick="document.getElementById('portalNotifPanel').classList.toggle('hidden')" class="relative p-2 text-portal-slate hover:bg-slate-100 rounded-lg">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+                            <span id="portalNotifDot" class="hidden absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"></span>
+                        </button>
+                        <div id="portalNotifPanel" class="hidden absolute right-0 top-12 w-80 bg-white rounded-xl shadow-xl border border-portal-border z-50">
+                            <div class="p-4 border-b border-portal-border flex items-center justify-between">
+                                <h3 class="font-bold text-sm">Notifications</h3>
+                                <button onclick="Portal.markAllRead()" class="text-xs text-portal-accent font-semibold">Mark all read</button>
+                            </div>
+                            <div class="max-h-96 overflow-y-auto" id="portalNotifList"></div>
+                        </div>
+                    </div>
+                    <a href="../admin/dashboard.html" class="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-portal-slate hover:bg-slate-200">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                        Admin ERP
+                    </a>
+                </div>
+            </header>
+            <main id="portalContent" class="flex-1 p-6 lg:p-8 overflow-y-auto"></main>
+        </div>
+    </div>
+
+    <!-- Toast container -->
+    <div id="portalToastContainer" class="fixed top-6 right-6 z-[100] flex flex-col gap-2"></div>
+
+    <!-- Scripts (order matters) -->
+    <script src="../admin/js/admin-data.js"></script>
+    <script src="../admin/js/procurement/procurement-data.js"></script>
+    <script src="../admin/js/procurement/procurement-store.js"></script>
+    <script src="../admin/js/procurement/procurement-rfq.js"></script>
+
+    <script src="js/portal-core.js"></script>
+    <script src="js/portal-identity.js"></script>
+    <script src="js/modules/dashboard.js"></script>
+    <script src="js/modules/profile.js"></script>
+    <script src="js/modules/opportunities.js"></script>
+    <script src="js/modules/quotations.js"></script>
+    <script src="js/modules/orders.js"></script>
+    <script src="js/modules/invoices.js"></script>
+    <script src="js/modules/messages.js"></script>
+</body>
+</html>

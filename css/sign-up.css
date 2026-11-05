@@ -1,0 +1,42 @@
+/* =========================================
+   SIGN-UP SPECIFIC STYLES
+   ========================================= */
+
+/* Password Strength Meter Bars */
+.strength-bar {
+    transition: background-color 0.3s ease;
+}
+
+/* Strength States */
+.strength-bar.weak { background-color: #E11D48; }      /* Red */
+.strength-bar.fair { background-color: #F59E0B; }      /* Amber */
+.strength-bar.good { background-color: #3B82F6; }      /* Blue */
+.strength-bar.strong { background-color: #059669; }    /* Green */
+
+/* Strength Text States */
+#strengthText.weak { color: #E11D48; }
+#strengthText.fair { color: #F59E0B; }
+#strengthText.good { color: #3B82F6; }
+#strengthText.strong { color: #059669; }
+
+/* Make the whole page scrollable on small screens */
+body {
+    min-height: 100vh;
+}
+
+/* Custom check button style */
+#terms:checked {
+    background-color: #8B5E34;
+    border-color: #8B5E34;
+}
+
+/* Eye icon tap highlight removal */
+.toggle-password {
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+/* Ensure the icon doesn't grow on mobile */
+.toggle-password svg {
+    pointer-events: none;
+}

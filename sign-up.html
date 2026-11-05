@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABO International Group - Create Account</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Shared + Sign-Up Specific CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sign-up.css">
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        brand: {
+                            brown: '#8B5E34',
+                            dark: '#1F140D',
+                            gold: '#C6A664',
+                            cream: '#F9F6F0',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-brand-cream font-sans text-gray-800 antialiased min-h-screen flex">
+
+    <!-- LEFT SIDE: Brand Panel -->
+    <div class="hidden lg:flex w-1/2 bg-brand-dark relative overflow-hidden flex-col justify-between p-12 text-white">
+        <!-- Abstract Background Shapes -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+            <svg class="absolute top-[-10%] left-[-10%] w-[120%] h-[120%]" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path d="M0 100 C 20 0 50 0 100 100 Z" fill="white" />
+            </svg>
+        </div>
+        <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-brand-gold rounded-full blur-3xl opacity-20"></div>
+        <div class="absolute top-32 -left-32 w-72 h-72 bg-brand-brown rounded-full blur-3xl opacity-30"></div>
+
+        <!-- Top Logo -->
+        <div class="relative z-10 flex items-center gap-4">
+            <div class="bg-white p-2 rounded-lg">
+                <img src="images/logo.png" alt="ABO Logo" class="w-10 h-10 object-contain">
+            </div>
+            <span class="text-xl font-bold tracking-widest uppercase">ABO Group</span>
+        </div>
+
+        <!-- Center Value Prop -->
+        <div class="relative z-10 max-w-md">
+            <h1 class="text-4xl font-bold leading-tight mb-6">Join a global network of financial leaders.</h1>
+            <p class="text-brand-cream/80 text-lg leading-relaxed mb-8">
+                Create your account to access institutional-grade tools, real-time analytics, and secure cross-border transactions.
+            </p>
+            
+            <!-- Feature List -->
+            <ul class="space-y-4 text-sm font-medium text-brand-cream/90">
+                <li class="flex items-start gap-3">
+                    <svg class="w-5 h-5 text-brand-gold flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    Multi-currency accounts
+                </li>
+                <li class="flex items-start gap-3">
+                    <svg class="w-5 h-5 text-brand-gold flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    Real-time analytics dashboard
+                </li>
+                <li class="flex items-start gap-3">
+                    <svg class="w-5 h-5 text-brand-gold flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    Dedicated account manager
+                </li>
+            </ul>
+        </div>
+
+        <div class="relative z-10 text-sm text-brand-cream/50">
+            © 2024 ABO International Group. All rights reserved.
+        </div>
+    </div>
+
+    <!-- RIGHT SIDE: Sign-Up Form -->
+    <div class="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-12 relative bg-brand-cream overflow-y-auto">
+        
+        <!-- Mobile Logo -->
+        <div class="absolute top-8 left-8 flex items-center gap-3 lg:hidden">
+            <img src="images/logo.png" alt="ABO Logo" class="w-10 h-10 object-contain">
+            <span class="text-lg font-bold text-brand-dark tracking-wider uppercase">ABO</span>
+        </div>
+
+        <!-- Toast Container -->
+        <div id="toastContainer" class="absolute top-6 right-6 z-50 flex flex-col gap-3"></div>
+
+        <div class="w-full max-w-md my-16 lg:my-0">
+            <!-- Header -->
+            <div class="mb-8 text-center lg:text-left">
+                <h2 class="text-3xl font-bold text-brand-dark mb-2">Create your account</h2>
+                <p class="text-gray-500 text-sm">Start your journey with ABO International Group.</p>
+            </div>
+
+            <!-- Form -->
+            <form id="signupForm" class="space-y-4" novalidate>
+                
+                <!-- Full Name -->
+                <div class="group" id="nameGroup">
+                    <label for="fullName" class="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400 group-focus-within:text-brand-brown transition-colors">
+                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                        </div>
+                        <input type="text" id="fullName" placeholder="John Doe" autocomplete="name"
+                            class="block w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-brown focus:border-transparent transition-all duration-200 bg-white">
+                    </div>
+                    <p class="error-msg text-red-500 text-xs mt-2 hidden font-medium"></p>
+                </div>
+
+                <!-- Email -->
+                <div class="group" id="emailGroup">
+                    <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400 group-focus-within:text-brand-brown transition-colors">
+                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"></path></svg>
+                        </div>
+                        <input type="email" id="email" placeholder="name@company.com" autocomplete="email"
+                            class="block w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-brown focus:border-transparent transition-all duration-200 bg-white">
+                    </div>
+                    <p class="error-msg text-red-500 text-xs mt-2 hidden font-medium"></p>
+                </div>
+
+                <!-- Password -->
+                <div class="group" id="passwordGroup">
+                    <label for="password" class="block text-sm font-semibold text-gray-700 mb-2">Password</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400 group-focus-within:text-brand-brown transition-colors">
+                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                        </div>
+                        <input type="password" id="password" placeholder="••••••••" autocomplete="new-password"
+                            class="block w-full pl-10 pr-12 py-3 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-brown focus:border-transparent transition-all duration-200 bg-white">
+                        
+                        <button type="button" class="toggle-password absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-brand-brown focus:outline-none transition-colors">
+                            <svg class="eye-icon h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                        </button>
+                    </div>
+                    
+                    <!-- Password Strength Meter -->
+                    <div class="mt-2">
+                        <div class="flex gap-1 h-1.5">
+                            <div class="strength-bar flex-1 rounded-full bg-gray-200 transition-colors duration-300"></div>
+                            <div class="strength-bar flex-1 rounded-full bg-gray-200 transition-colors duration-300"></div>
+                            <div class="strength-bar flex-1 rounded-full bg-gray-200 transition-colors duration-300"></div>
+                            <div class="strength-bar flex-1 rounded-full bg-gray-200 transition-colors duration-300"></div>
+                        </div>
+                        <p id="strengthText" class="text-xs text-gray-400 mt-1.5 transition-colors"></p>
+                    </div>
+                    <p class="error-msg text-red-500 text-xs mt-2 hidden font-medium"></p>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="group" id="confirmGroup">
+                    <label for="confirmPassword" class="block text-sm font-semibold text-gray-700 mb-2">Confirm Password</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400 group-focus-within:text-brand-brown transition-colors">
+                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                        </div>
+                        <input type="password" id="confirmPassword" placeholder="••••••••" autocomplete="new-password"
+                            class="block w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-brown focus:border-transparent transition-all duration-200 bg-white">
+                    </div>
+                    <p class="error-msg text-red-500 text-xs mt-2 hidden font-medium"></p>
+                </div>
+
+                <!-- Terms of Service -->
+                <div class="group" id="termsGroup">
+                    <div class="flex items-start">
+                        <input id="terms" type="checkbox" class="mt-0.5 h-4 w-4 text-brand-brown focus:ring-brand-brown border-gray-300 rounded cursor-pointer">
+                        <label for="terms" class="ml-2 block text-sm text-gray-600 cursor-pointer">
+                            I agree to the 
+                            <a href="#" class="text-brand-brown hover:text-brand-dark font-semibold">Terms of Service</a> 
+                            and 
+                            <a href="#" class="text-brand-brown hover:text-brand-dark font-semibold">Privacy Policy</a>.
+                        </label>
+                    </div>
+                    <p class="error-msg text-red-500 text-xs mt-2 hidden font-medium"></p>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" id="submitBtn" class="relative w-full flex justify-center py-3.5 px-4 border border-transparent rounded-xl shadow-sm text-sm font-bold text-white bg-brand-dark hover:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-dark transition-all duration-200 disabled:opacity-80 disabled:cursor-not-allowed overflow-hidden group mt-2">
+                    <span id="btnText" class="flex items-center gap-2">
+                        Create Account
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </span>
+                    <span id="btnSpinner" class="hidden absolute inset-0 flex items-center justify-center bg-brand-dark">
+                        <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                    </span>
+                </button>
+            </form>
+
+            <!-- Login Link -->
+            <p class="mt-8 text-center text-sm text-gray-500">
+                Already have an account? 
+                <a href="index.html" class="font-semibold text-brand-brown hover:text-brand-dark transition-colors">Sign in</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="js/sign-up.js"></script>
+</body>
+</html>

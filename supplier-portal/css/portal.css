@@ -1,0 +1,664 @@
+/* ============================================================
+   SUPPLIER PORTAL - DESIGN SYSTEM
+   Distinct from admin ERP. Cool, professional, task-oriented.
+   ============================================================ */
+
+:root {
+    --p-navy: #1E293B;
+    --p-slate: #334155;
+    --p-accent: #3B82F6;
+    --p-accent-dark: #1D4ED8;
+    --p-accent-light: #DBEAFE;
+    --p-surface: #F8FAFC;
+    --p-white: #FFFFFF;
+    --p-border: #E2E8F0;
+    --p-muted: #64748B;
+    --p-success: #10B981;
+    --p-success-bg: #ECFDF5;
+    --p-warning: #F59E0B;
+    --p-warning-bg: #FFFBEB;
+    --p-danger: #EF4444;
+    --p-danger-bg: #FEF2F2;
+    --p-info: #3B82F6;
+    --p-info-bg: #EFF6FF;
+
+    --p-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+    --p-shadow-md: 0 4px 12px rgba(15, 23, 42, 0.06);
+    --p-shadow-lg: 0 12px 30px rgba(15, 23, 42, 0.10);
+    --p-shadow-xl: 0 24px 48px rgba(15, 23, 42, 0.14);
+}
+
+/* ============================================================
+   SIDEBAR NAV
+   ============================================================ */
+
+.portal-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 9px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.65);
+    transition: all 0.15s ease;
+    margin-bottom: 2px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.portal-nav-link:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #FFFFFF;
+}
+
+.portal-nav-link.active {
+    background: var(--p-accent);
+    color: #FFFFFF;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35);
+}
+
+.portal-nav-section-title {
+    padding: 14px 12px 6px;
+    font-size: 10px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.35);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.portal-nav-link .badge-count {
+    margin-left: auto;
+    background: var(--p-danger);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 9999px;
+    min-width: 20px;
+    text-align: center;
+}
+
+/* ============================================================
+   CARDS / KPI
+   ============================================================ */
+
+.portal-card {
+    background: var(--p-white);
+    border: 1px solid var(--p-border);
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: var(--p-shadow-sm);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.portal-card:hover {
+    box-shadow: var(--p-shadow-md);
+}
+
+.portal-kpi {
+    background: var(--p-white);
+    border: 1px solid var(--p-border);
+    border-radius: 14px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--p-shadow-sm);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.portal-kpi:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--p-shadow-md);
+    border-color: var(--p-accent);
+}
+
+.portal-kpi-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--p-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+}
+
+.portal-kpi-value {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--p-navy);
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+.portal-kpi-sub {
+    font-size: 12px;
+    color: var(--p-muted);
+    margin-top: 8px;
+}
+
+.portal-kpi-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.portal-kpi-icon.blue { background: var(--p-info-bg); color: var(--p-info); }
+.portal-kpi-icon.green { background: var(--p-success-bg); color: var(--p-success); }
+.portal-kpi-icon.amber { background: var(--p-warning-bg); color: var(--p-warning); }
+.portal-kpi-icon.red { background: var(--p-danger-bg); color: var(--p-danger); }
+
+/* ============================================================
+   BADGES
+   ============================================================ */
+
+.portal-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 10px;
+    border-radius: 9999px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+}
+
+.portal-badge-success { background: var(--p-success-bg); color: #065F46; }
+.portal-badge-warning { background: var(--p-warning-bg); color: #92400E; }
+.portal-badge-danger { background: var(--p-danger-bg); color: #991B1B; }
+.portal-badge-info { background: var(--p-info-bg); color: #1E40AF; }
+.portal-badge-neutral { background: #F1F5F9; color: #475569; }
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+
+.p-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border: none;
+    white-space: nowrap;
+    font-family: inherit;
+}
+
+.p-btn-primary {
+    background: var(--p-accent);
+    color: white;
+}
+
+.p-btn-primary:hover {
+    background: var(--p-accent-dark);
+}
+
+.p-btn-primary:disabled {
+    background: #94A3B8;
+    cursor: not-allowed;
+}
+
+.p-btn-secondary {
+    background: var(--p-white);
+    color: var(--p-slate);
+    border: 1px solid var(--p-border);
+}
+
+.p-btn-secondary:hover {
+    background: var(--p-surface);
+    border-color: var(--p-accent);
+    color: var(--p-accent);
+}
+
+.p-btn-success {
+    background: var(--p-success);
+    color: white;
+}
+
+.p-btn-success:hover {
+    background: #059669;
+}
+
+.p-btn-danger {
+    background: var(--p-danger-bg);
+    color: var(--p-danger);
+}
+
+.p-btn-danger:hover {
+    background: #FECACA;
+}
+
+.p-btn-sm {
+    padding: 6px 12px;
+    font-size: 12px;
+}
+
+.p-btn-lg {
+    padding: 14px 24px;
+    font-size: 14px;
+}
+
+/* ============================================================
+   TABLES
+   ============================================================ */
+
+.portal-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.portal-table thead th {
+    text-align: left;
+    padding: 12px 16px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--p-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    background: var(--p-surface);
+    border-bottom: 1px solid var(--p-border);
+    white-space: nowrap;
+}
+
+.portal-table tbody td {
+    padding: 14px 16px;
+    font-size: 13px;
+    color: var(--p-slate);
+    border-bottom: 1px solid #F1F5F9;
+    vertical-align: middle;
+}
+
+.portal-table tbody tr {
+    transition: background 0.1s ease;
+}
+
+.portal-table tbody tr:hover {
+    background: var(--p-surface);
+    cursor: pointer;
+}
+
+/* ============================================================
+   FORMS
+   ============================================================ */
+
+.p-input,
+.p-select,
+.p-textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--p-border);
+    border-radius: 8px;
+    font-size: 13px;
+    font-family: inherit;
+    color: var(--p-navy);
+    background: var(--p-white);
+    transition: all 0.15s ease;
+    outline: none;
+}
+
+.p-input:focus,
+.p-select:focus,
+.p-textarea:focus {
+    border-color: var(--p-accent);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.p-input.error,
+.p-select.error {
+    border-color: var(--p-danger);
+    background: var(--p-danger-bg);
+}
+
+.p-form-group {
+    margin-bottom: 16px;
+}
+
+.p-form-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--p-slate);
+    margin-bottom: 6px;
+}
+
+.p-form-error {
+    color: var(--p-danger);
+    font-size: 11px;
+    margin-top: 4px;
+    font-weight: 600;
+}
+
+.p-form-hint {
+    font-size: 11px;
+    color: var(--p-muted);
+    margin-top: 4px;
+}
+
+/* ============================================================
+   TABS
+   ============================================================ */
+
+.p-tabs {
+    display: flex;
+    gap: 2px;
+    border-bottom: 1px solid var(--p-border);
+    margin-bottom: 24px;
+    overflow-x: auto;
+    background: var(--p-white);
+    border-radius: 12px 12px 0 0;
+    padding: 0 20px;
+}
+
+.p-tab {
+    padding: 14px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--p-muted);
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-family: inherit;
+    white-space: nowrap;
+}
+
+.p-tab:hover {
+    color: var(--p-navy);
+}
+
+.p-tab.active {
+    color: var(--p-accent);
+    border-bottom-color: var(--p-accent);
+}
+
+/* ============================================================
+   ALERT / INFO BOX
+   ============================================================ */
+
+.p-alert {
+    border-radius: 10px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 13px;
+    margin-bottom: 16px;
+}
+
+.p-alert-info { background: var(--p-info-bg); color: #1E40AF; border: 1px solid #BFDBFE; }
+.p-alert-success { background: var(--p-success-bg); color: #065F46; border: 1px solid #A7F3D0; }
+.p-alert-warning { background: var(--p-warning-bg); color: #92400E; border: 1px solid #FDE68A; }
+.p-alert-danger { background: var(--p-danger-bg); color: #991B1B; border: 1px solid #FECACA; }
+
+.p-alert-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+/* ============================================================
+   EMPTY STATE
+   ============================================================ */
+
+.p-empty {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--p-muted);
+}
+
+.p-empty-icon {
+    font-size: 48px;
+    opacity: 0.3;
+    margin-bottom: 16px;
+}
+
+.p-empty h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--p-navy);
+    margin-bottom: 6px;
+}
+
+.p-empty p {
+    font-size: 13px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+
+.p-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.5);
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    backdrop-filter: blur(2px);
+    animation: pFadeIn 0.2s ease;
+}
+
+@keyframes pFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.p-modal {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.4);
+    width: 100%;
+    max-width: 640px;
+    max-height: 90vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    animation: pModalIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes pModalIn {
+    from { transform: scale(0.96) translateY(10px); opacity: 0; }
+    to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.p-modal-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--p-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.p-modal-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--p-navy);
+}
+
+.p-modal-body {
+    padding: 24px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.p-modal-footer {
+    padding: 16px 24px;
+    border-top: 1px solid var(--p-border);
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    background: var(--p-surface);
+}
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+
+@keyframes pToastIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+.p-toast {
+    animation: pToastIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    min-width: 280px;
+    max-width: 400px;
+    background: white;
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: var(--p-shadow-xl);
+    border-left: 4px solid var(--p-success);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--p-navy);
+}
+
+.p-toast.error {
+    border-left-color: var(--p-danger);
+}
+
+.p-toast.info {
+    border-left-color: var(--p-info);
+}
+
+/* ============================================================
+   RFQ / OPPORTUNITY CARDS
+   ============================================================ */
+
+.opportunity-card {
+    background: white;
+    border: 1px solid var(--p-border);
+    border-radius: 14px;
+    padding: 20px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.opportunity-card:hover {
+    border-color: var(--p-accent);
+    box-shadow: var(--p-shadow-md);
+    transform: translateY(-1px);
+}
+
+.opportunity-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--p-accent);
+}
+
+.opportunity-card.urgent::before { background: var(--p-warning); }
+.opportunity-card.critical::before { background: var(--p-danger); }
+
+.opportunity-ref {
+    font-family: ui-monospace, monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--p-accent);
+    margin-bottom: 6px;
+}
+
+.opportunity-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--p-navy);
+    margin-bottom: 6px;
+    line-height: 1.3;
+}
+
+.opportunity-meta {
+    font-size: 12px;
+    color: var(--p-muted);
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+}
+
+.opportunity-countdown {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    background: var(--p-info-bg);
+    color: var(--p-info);
+}
+
+.opportunity-countdown.urgent { background: var(--p-warning-bg); color: var(--p-warning); }
+.opportunity-countdown.critical { background: var(--p-danger-bg); color: var(--p-danger); }
+
+/* ============================================================
+   LINE ITEMS TABLE (for quotation builder)
+   ============================================================ */
+
+.quote-line {
+    display: grid;
+    grid-template-columns: 2fr 80px 80px 110px 110px;
+    gap: 8px;
+    align-items: start;
+    padding: 12px;
+    border: 1px solid var(--p-border);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    background: white;
+}
+
+@media (max-width: 768px) {
+    .quote-line {
+        grid-template-columns: 1fr;
+    }
+}
+
+.quote-line-total {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--p-accent);
+    padding-top: 10px;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 768px) {
+    .portal-card { padding: 16px; }
+    .portal-kpi { padding: 16px; }
+    .portal-kpi-value { font-size: 22px; }
+    .p-modal { max-width: 100%; }
+}

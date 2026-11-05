@@ -1,0 +1,416 @@
+/* ============================================================
+   EVALUATION & AWARD STYLES
+   ============================================================ */
+
+/* Scoring matrix */
+.eval-matrix {
+    background: white;
+    border: 1px solid var(--proc-border);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.eval-matrix table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.eval-matrix th {
+    text-align: left;
+    padding: 14px 16px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--proc-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    background: #F9FAFB;
+    border-bottom: 1px solid var(--proc-border);
+    position: sticky;
+    top: 0;
+    z-index: 5;
+}
+
+.eval-matrix th.supplier-col {
+    min-width: 200px;
+    position: sticky;
+    left: 0;
+    background: #F9FAFB;
+    z-index: 6;
+}
+
+.eval-matrix td {
+    padding: 12px 16px;
+    font-size: 13px;
+    color: var(--proc-text);
+    border-bottom: 1px solid #F3F4F6;
+    vertical-align: middle;
+}
+
+.eval-matrix td.supplier-col {
+    position: sticky;
+    left: 0;
+    background: white;
+    font-weight: 600;
+    z-index: 4;
+}
+
+.eval-matrix tbody tr:hover td {
+    background: #FEF9F0;
+}
+
+.eval-matrix tbody tr:hover td.supplier-col {
+    background: #FEF9F0;
+}
+
+.eval-matrix tr.subtotal td {
+    background: #F9FAFB;
+    font-weight: 700;
+    border-top: 2px solid var(--proc-border);
+}
+
+.eval-matrix tr.total td {
+    background: var(--proc-primary);
+    color: white;
+    font-weight: 800;
+    font-size: 14px;
+}
+
+.eval-matrix tr.total td.supplier-col {
+    background: var(--proc-primary);
+    color: white;
+}
+
+/* Mandatory checks */
+.mandatory-check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    border: 1px solid transparent;
+}
+
+.mandatory-check:hover {
+    background: #F9FAFB;
+}
+
+.mandatory-check.pass {
+    background: var(--proc-success-bg);
+    color: var(--proc-success);
+    border-color: #A7F3D0;
+}
+
+.mandatory-check.fail {
+    background: var(--proc-danger-bg);
+    color: var(--proc-danger);
+    border-color: #FECACA;
+}
+
+.mandatory-check.clarification {
+    background: var(--proc-warning-bg);
+    color: var(--proc-warning);
+    border-color: #FDE68A;
+}
+
+.mandatory-check-icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 800;
+    flex-shrink: 0;
+}
+
+.mandatory-check.pass .mandatory-check-icon {
+    background: var(--proc-success);
+    color: white;
+}
+
+.mandatory-check.fail .mandatory-check-icon {
+    background: var(--proc-danger);
+    color: white;
+}
+
+.mandatory-check.clarification .mandatory-check-icon {
+    background: var(--proc-warning);
+    color: white;
+}
+
+/* Criteria weight bar */
+.criteria-weight {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.criteria-weight-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--proc-text);
+    min-width: 180px;
+}
+
+.criteria-weight-bar {
+    flex: 1;
+    height: 8px;
+    background: #F3F4F6;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.criteria-weight-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--proc-primary), var(--proc-primary-light));
+    border-radius: 4px;
+    transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.criteria-weight-value {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--proc-primary);
+    min-width: 40px;
+    text-align: right;
+}
+
+/* Recommendation box */
+.recommendation-box {
+    padding: 20px;
+    background: linear-gradient(135deg, #FEF9F0 0%, #FFF9F0 100%);
+    border: 2px solid var(--proc-primary-light);
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.recommendation-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--proc-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+}
+
+.recommendation-winner {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--proc-text);
+    margin-bottom: 4px;
+}
+
+.recommendation-meta {
+    font-size: 13px;
+    color: var(--proc-text-muted);
+}
+
+/* Approval flow */
+.approval-flow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px;
+    background: white;
+    border: 1px solid var(--proc-border);
+    border-radius: 10px;
+    margin-bottom: 16px;
+    overflow-x: auto;
+}
+
+.approval-step {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    background: #F3F4F6;
+    color: var(--proc-text-muted);
+}
+
+.approval-step.done {
+    background: var(--proc-success-bg);
+    color: var(--proc-success);
+}
+
+.approval-step.current {
+    background: var(--proc-warning-bg);
+    color: var(--proc-warning);
+    box-shadow: 0 0 0 2px #FDE68A;
+}
+
+.approval-step.rejected {
+    background: var(--proc-danger-bg);
+    color: var(--proc-danger);
+}
+
+.approval-step-num {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: currentColor;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 800;
+    flex-shrink: 0;
+}
+
+.approval-arrow {
+    color: var(--proc-text-muted);
+    font-size: 14px;
+}
+
+/* Quote summary cards */
+.quote-summary {
+    background: white;
+    border: 1px solid var(--proc-border);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+    transition: all 0.2s;
+}
+
+.quote-summary.winner {
+    border-color: var(--proc-success);
+    box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+}
+
+.quote-summary.eliminated {
+    opacity: 0.5;
+    background: #FAFAFA;
+}
+
+.quote-summary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    gap: 12px;
+}
+
+.quote-score-big {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+.quote-score-big.winner { color: var(--proc-success); }
+.quote-score-big.low { color: var(--proc-text-muted); }
+
+/* Score input */
+.score-input {
+    width: 70px;
+    padding: 8px 10px;
+    border: 1px solid var(--proc-border);
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+    transition: all 0.15s;
+}
+
+.score-input:focus {
+    outline: none;
+    border-color: var(--proc-primary);
+    box-shadow: 0 0 0 3px rgba(139, 94, 52, 0.1);
+}
+
+.score-input.error {
+    border-color: var(--proc-danger);
+    background: var(--proc-danger-bg);
+}
+
+/* Comparison table */
+.comparison-table {
+    background: white;
+    border: 1px solid var(--proc-border);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.comparison-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.comparison-table th {
+    text-align: left;
+    padding: 12px 16px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--proc-text-muted);
+    text-transform: uppercase;
+    background: #F9FAFB;
+    border-bottom: 1px solid var(--proc-border);
+}
+
+.comparison-table td {
+    padding: 12px 16px;
+    font-size: 13px;
+    border-bottom: 1px solid #F3F4F6;
+}
+
+.comparison-table .best-value {
+    background: var(--proc-success-bg);
+    font-weight: 700;
+    color: var(--proc-success);
+}
+
+.comparison-table .worst-value {
+    background: var(--proc-danger-bg);
+    color: var(--proc-danger);
+}
+
+/* Award modal */
+.award-hero {
+    background: linear-gradient(135deg, #1F140D 0%, #3D2614 100%);
+    color: white;
+    padding: 24px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.award-hero::before {
+    content: '🏆';
+    position: absolute;
+    right: -20px;
+    top: -20px;
+    font-size: 120px;
+    opacity: 0.1;
+}
+
+.award-hero-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+}
+
+.award-hero-supplier {
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 6px;
+}
+
+.award-hero-value {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--proc-gold);
+}

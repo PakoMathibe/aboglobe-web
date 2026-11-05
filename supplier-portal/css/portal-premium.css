@@ -1,0 +1,259 @@
+/* ============================================================
+   PREMIUM POLISH LAYER
+   Subtle refinements that make the portal feel elite
+   ============================================================ */
+
+/* Smooth sidebar scrollbar */
+#portalNav::-webkit-scrollbar { width: 4px; }
+#portalNav::-webkit-scrollbar-track { background: transparent; }
+#portalNav::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 2px; }
+
+/* Content entrance animation */
+@keyframes portalContentIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.portal-content-enter {
+    animation: portalContentIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Section headers */
+.portal-section-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--p-navy);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.portal-section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--p-border);
+}
+
+/* Field rows */
+.p-field-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 11px 0;
+    border-bottom: 1px solid #F1F5F9;
+    font-size: 13px;
+}
+
+.p-field-row:last-child {
+    border-bottom: none;
+}
+
+.p-field-row-label {
+    color: var(--p-muted);
+    font-weight: 500;
+}
+
+.p-field-row-value {
+    color: var(--p-navy);
+    font-weight: 600;
+    text-align: right;
+    max-width: 60%;
+    word-break: break-word;
+}
+
+/* Progress bar */
+.p-progress {
+    height: 6px;
+    background: #F1F5F9;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.p-progress-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.p-progress-fill.success { background: var(--p-success); }
+.p-progress-fill.warning { background: var(--p-warning); }
+.p-progress-fill.danger { background: var(--p-danger); }
+.p-progress-fill.accent { background: var(--p-accent); }
+
+/* Task list */
+.portal-task {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px;
+    border: 1px solid var(--p-border);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    background: white;
+    transition: all 0.15s ease;
+    cursor: pointer;
+}
+
+.portal-task:hover {
+    border-color: var(--p-accent);
+    background: #F8FAFC;
+}
+
+.portal-task-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 16px;
+}
+
+.portal-task-icon.urgent { background: var(--p-danger-bg); color: var(--p-danger); }
+.portal-task-icon.warning { background: var(--p-warning-bg); color: var(--p-warning); }
+.portal-task-icon.info { background: var(--p-info-bg); color: var(--p-info); }
+.portal-task-icon.success { background: var(--p-success-bg); color: var(--p-success); }
+
+.portal-task-content { flex: 1; min-width: 0; }
+
+.portal-task-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--p-navy);
+    margin-bottom: 3px;
+}
+
+.portal-task-meta {
+    font-size: 11px;
+    color: var(--p-muted);
+}
+
+/* Avatar colors */
+.portal-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+}
+
+/* Timeline */
+.p-timeline {
+    position: relative;
+    padding-left: 24px;
+}
+
+.p-timeline-item {
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.p-timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -18px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--p-accent);
+    border: 2px solid white;
+    box-shadow: 0 0 0 2px var(--p-accent);
+}
+
+.p-timeline-item::after {
+    content: '';
+    position: absolute;
+    left: -14px;
+    top: 18px;
+    bottom: -4px;
+    width: 2px;
+    background: var(--p-border);
+}
+
+.p-timeline-item:last-child::after {
+    display: none;
+}
+
+.p-timeline-time {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--p-muted);
+}
+
+.p-timeline-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--p-navy);
+    margin: 3px 0;
+}
+
+.p-timeline-desc {
+    font-size: 12px;
+    color: var(--p-muted);
+}
+
+/* Line clamp utility */
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Notification item */
+.p-notification {
+    padding: 14px 16px;
+    border-bottom: 1px solid #F1F5F9;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    transition: background 0.1s ease;
+}
+
+.p-notification:hover {
+    background: var(--p-surface);
+}
+
+.p-notification.unread {
+    background: #EFF6FF;
+}
+
+.p-notification-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 6px;
+}
+
+/* Grid utilities */
+.p-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.p-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+}
+
+.p-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+}

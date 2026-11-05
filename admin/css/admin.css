@@ -1,0 +1,35 @@
+/* =========================================
+   BASE ADMIN STYLES
+   ========================================= */
+
+.nav-link {
+    display: flex; align-items: center; gap: 12px;
+    padding: 9px 12px; border-radius: 8px; font-size: 13px; font-weight: 500;
+    color: rgba(249, 246, 240, 0.6); transition: all 0.2s ease; margin-bottom: 2px;
+}
+.nav-link:hover { background-color: rgba(255, 255, 255, 0.05); color: #fff; }
+.nav-link.active { background-color: #8B5E34; color: #fff; box-shadow: 0 4px 12px rgba(139, 94, 52, 0.3); }
+
+.nav-section-title {
+    padding: 16px 12px 6px; font-size: 10px; font-weight: 700;
+    color: rgba(249, 246, 240, 0.35); text-transform: uppercase; letter-spacing: 0.08em;
+}
+
+@keyframes contentFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.content-enter { animation: contentFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+nav::-webkit-scrollbar { width: 4px; }
+nav::-webkit-scrollbar-track { background: transparent; }
+nav::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 2px; }
+
+.pulse-dot {
+    width: 8px; height: 8px; border-radius: 50%; background: #10B981;
+    animation: pulse 2s infinite;
+}
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}

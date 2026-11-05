@@ -1,0 +1,272 @@
+/* ============================================================
+   PURCHASE ORDER & RECEIVING STYLES
+   ============================================================ */
+
+/* PO document preview (printable) */
+.po-document {
+    background: white;
+    border: 1px solid var(--proc-border);
+    border-radius: 12px;
+    padding: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+    font-family: 'Inter', sans-serif;
+}
+
+.po-doc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 24px;
+    border-bottom: 2px solid var(--proc-primary);
+    margin-bottom: 24px;
+}
+
+.po-doc-logo {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--proc-primary);
+    letter-spacing: -0.02em;
+}
+
+.po-doc-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--proc-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+}
+
+.po-doc-number {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--proc-text);
+    font-family: monospace;
+}
+
+.po-doc-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.po-doc-meta-block {
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.po-doc-meta-block strong {
+    display: block;
+    color: var(--proc-text);
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.po-doc-meta-block span {
+    color: var(--proc-text-muted);
+}
+
+.po-doc-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 24px;
+}
+
+.po-doc-table thead th {
+    text-align: left;
+    padding: 10px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--proc-text-muted);
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--proc-border);
+}
+
+.po-doc-table tbody td {
+    padding: 12px;
+    font-size: 13px;
+    border-bottom: 1px solid #F3F4F6;
+}
+
+.po-doc-table tbody tr:last-child td {
+    border-bottom: 2px solid var(--proc-border);
+}
+
+.po-doc-totals {
+    display: flex;
+    justify-content: flex-end;
+    gap: 40px;
+    margin-bottom: 24px;
+}
+
+.po-doc-total-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    font-size: 13px;
+    min-width: 280px;
+}
+
+.po-doc-total-row.grand {
+    padding-top: 12px;
+    border-top: 2px solid var(--proc-primary);
+    margin-top: 6px;
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--proc-primary);
+}
+
+/* Receipt form */
+.receipt-form {
+    background: white;
+    border: 1px solid var(--proc-border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+}
+
+.receipt-line {
+    display: grid;
+    grid-template-columns: 2fr 100px 100px 100px 100px;
+    gap: 10px;
+    align-items: center;
+    padding: 12px;
+    border-bottom: 1px solid #F3F4F6;
+}
+
+.receipt-line:last-child {
+    border-bottom: none;
+}
+
+.receipt-line-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--proc-text);
+}
+
+.receipt-line-qty {
+    font-size: 12px;
+    color: var(--proc-text-muted);
+    margin-top: 2px;
+}
+
+.receipt-input {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--proc-border);
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.receipt-input:focus {
+    outline: none;
+    border-color: var(--proc-primary);
+    box-shadow: 0 0 0 3px rgba(139, 94, 52, 0.1);
+}
+
+.receipt-input.reject {
+    background: var(--proc-danger-bg);
+    border-color: var(--proc-danger);
+    color: var(--proc-danger);
+}
+
+.receipt-input.damage {
+    background: var(--proc-warning-bg);
+    border-color: var(--proc-warning);
+    color: var(--proc-warning);
+}
+
+@media (max-width: 768px) {
+    .receipt-line {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Discrepancy types */
+.discrepancy-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.discrepancy-badge.short { background: var(--proc-warning-bg); color: var(--proc-warning); }
+.discrepancy-badge.over { background: var(--proc-info-bg); color: var(--proc-info); }
+.discrepancy-badge.damaged { background: var(--proc-danger-bg); color: var(--proc-danger); }
+.discrepancy-badge.rejected { background: var(--proc-danger-bg); color: var(--proc-danger); }
+
+/* PO progress bar */
+.po-progress {
+    display: flex;
+    gap: 2px;
+    height: 8px;
+    background: #F3F4F6;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 8px 0;
+}
+
+.po-progress-segment {
+    height: 100%;
+    transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.po-progress-received { background: var(--proc-success); }
+.po-progress-pending { background: var(--proc-border); }
+
+/* Action card */
+.po-action-card {
+    padding: 16px;
+    border: 1px solid var(--proc-border);
+    border-radius: 10px;
+    margin-bottom: 12px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.po-action-card:hover {
+    border-color: var(--proc-primary);
+    box-shadow: var(--proc-shadow-md);
+}
+
+.po-action-card-title {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--proc-text);
+    margin-bottom: 4px;
+}
+
+.po-action-card-desc {
+    font-size: 12px;
+    color: var(--proc-text-muted);
+}
+
+/* Print styles */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    .po-document, .po-document * {
+        visibility: visible;
+    }
+    .po-document {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        border: none;
+        box-shadow: none;
+    }
+    .no-print {
+        display: none !important;
+    }
+}

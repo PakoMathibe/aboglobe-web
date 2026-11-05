@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABO ERP - Enterprise Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/admin-modules.css">
+    <link rel="stylesheet" href="css/admin-forms.css">
+    <link rel="stylesheet" href="css/admin-premium.css">
+    <link rel="stylesheet" href="css/procurement.css">
+    <link rel="stylesheet" href="css/procurement-rfq.css">
+    <link rel="stylesheet" href="css/procurement-evaluation.css">
+    <link rel="stylesheet" href="css/procurement-po.css">
+    <link rel="stylesheet" href="css/procurement-invoice.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        brand: { brown: '#8B5E34', dark: '#1F140D', gold: '#C6A664', cream: '#F9F6F0' }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800 antialiased">
+
+    <aside id="sidebar" class="fixed top-0 left-0 h-screen w-64 bg-brand-dark text-white flex flex-col z-40 transition-transform duration-300 transform lg:translate-x-0 -translate-x-full">
+        <div class="flex items-center gap-3 px-6 h-20 border-b border-white/10">
+            <div class="bg-white p-1.5 rounded-lg">
+                <img src="../images/logo.png" alt="ABO" class="w-8 h-8 object-contain">
+            </div>
+            <div>
+                <p class="text-sm font-bold tracking-wider uppercase">ABO ERP</p>
+                <p class="text-[10px] text-brand-cream/50 tracking-widest">ENTERPRISE</p>
+            </div>
+        </div>
+        <nav class="flex-1 overflow-y-auto py-4 px-3" id="sidebarNav"></nav>
+        <div class="border-t border-white/10 p-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-brand-gold flex items-center justify-center text-brand-dark font-bold text-sm" id="userInitials">SC</div>
+                <div class="flex-1 min-w-0">
+                    <p class="text-sm font-semibold truncate" id="userName">Sarah Chen</p>
+                    <p class="text-xs text-brand-cream/50 truncate" id="userRole">Administrator</p>
+                </div>
+                <button onclick="App.navigateTo('profile')" class="text-brand-cream/50 hover:text-white transition-colors" title="Profile">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <div class="lg:ml-64 min-h-screen flex flex-col">
+        <header class="h-20 bg-white border-b border-gray-200 flex items-center justify-between px-6 lg:px-8 sticky top-0 z-30">
+            <div class="flex items-center gap-4">
+                <button id="menuToggle" class="lg:hidden text-gray-600 hover:text-brand-dark">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+                <div>
+                    <h1 id="pageTitle" class="text-xl font-bold text-brand-dark">Dashboard</h1>
+                    <p id="pageSubtitle" class="text-xs text-gray-500">Real-time enterprise overview</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <button onclick="App.openCommandPalette()" class="hidden md:flex items-center bg-gray-100 rounded-lg px-3 py-2 w-64 text-left">
+                    <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    <span class="ml-2 text-sm text-gray-400 flex-1">Search...</span>
+                    <kbd class="text-[10px] bg-white px-1.5 py-0.5 rounded border border-gray-200">⌘K</kbd>
+                </button>
+                <div class="relative">
+                    <button onclick="document.getElementById('notifPanel').classList.toggle('hidden')" class="relative p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+                        <span id="notifDot" class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"></span>
+                    </button>
+                    <div id="notifPanel" class="hidden absolute right-0 top-14 w-80 bg-white rounded-2xl shadow-2xl border border-gray-100 z-50">
+                        <div class="p-4 border-b border-gray-100 flex items-center justify-between">
+                            <h3 class="font-bold text-brand-dark">Notifications</h3>
+                            <button onclick="App.markAllRead()" class="text-xs text-brand-brown font-semibold">Mark all read</button>
+                        </div>
+                        <div class="max-h-96 overflow-y-auto" id="notifList"></div>
+                    </div>
+                </div>
+                <button onclick="App.switchRole(ERP.currentUser.role === 'Admin' ? 'Viewer' : 'Admin')" class="role-badge">
+                    <span id="roleBadge">Admin</span> ▾
+                </button>
+                <div onclick="App.navigateTo('profile')" class="w-9 h-9 rounded-full bg-brand-brown text-white flex items-center justify-center font-bold text-xs cursor-pointer" id="topInitials">SC</div>
+            </div>
+        </header>
+        <main id="contentArea" class="flex-1 p-6 lg:p-8 overflow-y-auto"></main>
+    </div>
+
+    <div id="toastContainer" class="fixed top-6 right-6 z-[100] flex flex-col gap-2"></div>
+
+    <!-- Core -->
+    <script src="js/admin-data.js"></script>
+    <script src="js/admin-core.js"></script>
+    <script src="js/admin-forms.js"></script>
+
+    <!-- Existing 19 modules -->
+    <script src="js/modules/dashboard.js"></script>
+    <script src="js/modules/financial.js"></script>
+    <script src="js/modules/operations.js"></script>
+    <script src="js/modules/procurement.js"></script>
+    <script src="js/modules/people.js"></script>
+    <script src="js/modules/crm.js"></script>
+    <script src="js/modules/projects.js"></script>
+    <script src="js/modules/kanban.js"></script>
+    <script src="js/modules/system.js"></script>
+    <script src="js/modules/users.js"></script>
+    <script src="js/modules/profile.js"></script>
+    <script src="js/modules/chat.js"></script>
+    <script src="js/modules/documents.js"></script>
+    <script src="js/modules/email.js"></script>
+    <script src="js/modules/calendar.js"></script>
+    <script src="js/modules/workflow.js"></script>
+    <script src="js/modules/reports.js"></script>
+    <script src="js/modules/settings.js"></script>
+
+    <!-- Procurement Workspace (Phases 1-6) -->
+    <script src="js/procurement/procurement-data.js"></script>
+    <script src="js/procurement/procurement-store.js"></script>
+    <script src="js/procurement/procurement-vendors.js"></script>
+    <script src="js/procurement/procurement-rfq.js"></script>
+    <script src="js/procurement/procurement-evaluation.js"></script>
+    <script src="js/procurement/procurement-po.js"></script>
+    <script src="js/procurement/procurement-invoice.js"></script>
+    <script src="js/procurement/procurement-analytics.js"></script>
+</body>
+</html>
